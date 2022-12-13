@@ -1,0 +1,2 @@
+C:\Users\solt2\OneDrive\Робочий стіл\step\Курс 2\Системное програмирование\ClientServer\Debug\ClientServer.exe
+C:\Users\Admin\Downloads\ClientServer\Debug\ClientServer.exe
