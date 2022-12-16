@@ -1,0 +1,195 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Russian (Russia) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_RUS)
+LANGUAGE LANG_RUSSIAN, SUBLANG_DEFAULT
+#pragma code_page(1251)
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 539, 233
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+MENU IDR_MENU1
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_EDIT1,19,14,501,124,ES_MULTILINE | ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    PUSHBUTTON      "Q",IDC_BUTTON1,46,149,30,21,WS_DISABLED
+    PUSHBUTTON      "W",IDC_BUTTON2,79,149,30,21,WS_DISABLED
+    PUSHBUTTON      "E",IDC_BUTTON3,111,149,30,21,WS_DISABLED
+    PUSHBUTTON      "R",IDC_BUTTON4,142,149,30,21,WS_DISABLED
+    PUSHBUTTON      "T",IDC_BUTTON5,175,149,30,21,WS_DISABLED
+    PUSHBUTTON      "Y",IDC_BUTTON6,207,149,30,21,WS_DISABLED
+    PUSHBUTTON      "U",IDC_BUTTON7,240,149,30,21,WS_DISABLED
+    PUSHBUTTON      "I",IDC_BUTTON8,272,149,30,21,WS_DISABLED
+    PUSHBUTTON      "O",IDC_BUTTON9,303,149,30,21,WS_DISABLED
+    PUSHBUTTON      "P",IDC_BUTTON10,334,149,30,21,WS_DISABLED
+    PUSHBUTTON      "A",IDC_BUTTON11,59,170,30,21,WS_DISABLED
+    PUSHBUTTON      "S",IDC_BUTTON12,91,170,30,21,WS_DISABLED
+    PUSHBUTTON      "D",IDC_BUTTON13,123,170,30,21,WS_DISABLED
+    PUSHBUTTON      "G",IDC_BUTTON14,186,170,30,21,WS_DISABLED
+    PUSHBUTTON      "F",IDC_BUTTON15,154,170,30,21,WS_DISABLED
+    PUSHBUTTON      "H",IDC_BUTTON16,218,170,30,21,WS_DISABLED
+    PUSHBUTTON      "J",IDC_BUTTON17,250,170,30,21,WS_DISABLED
+    PUSHBUTTON      "K",IDC_BUTTON18,282,170,30,21,WS_DISABLED
+    PUSHBUTTON      "L",IDC_BUTTON19,313,170,30,21,WS_DISABLED
+    PUSHBUTTON      "Z",IDC_BUTTON20,75,191,30,21,WS_DISABLED
+    PUSHBUTTON      "X",IDC_BUTTON21,107,191,30,21,WS_DISABLED
+    PUSHBUTTON      "C",IDC_BUTTON22,140,191,30,21,WS_DISABLED
+    PUSHBUTTON      "V",IDC_BUTTON23,172,191,30,21,WS_DISABLED
+    PUSHBUTTON      "B",IDC_BUTTON24,204,191,30,21,WS_DISABLED
+    PUSHBUTTON      "N",IDC_BUTTON25,236,191,30,21,WS_DISABLED
+    PUSHBUTTON      "M",IDC_BUTTON26,268,191,30,21,WS_DISABLED
+    EDITTEXT        IDC_EDIT2,402,146,112,23,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    EDITTEXT        IDC_EDIT3,402,169,112,31,ES_AUTOHSCROLL | ES_READONLY | WS_DISABLED
+    CONTROL         "",IDC_PROGRESS1,"msctls_progress32",PBS_SMOOTH | WS_BORDER,355,212,177,14
+    LTEXT           "WPM",IDC_STATIC,377,151,17,8
+    LTEXT           "TIME",IDC_STATIC,374,181,18,8
+    LTEXT           "PROGRESS",IDC_STATIC,414,205,37,8
+END
+
+IDD_DIALOG2 DIALOGEX 0, 0, 259, 312
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_LEADERBOARD,16,15,228,191,ES_MULTILINE | ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "Записать свой результат",IDC_BUTTON1,53,276,152,20
+    EDITTEXT        IDC_SCORE,17,241,221,27,ES_AUTOHSCROLL
+    LTEXT           "Введите имя",IDC_STATIC,98,228,95,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 532
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 226
+        HORZGUIDE, 169
+        HORZGUIDE, 189
+    END
+
+    IDD_DIALOG2, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 252
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 305
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG1 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+IDD_DIALOG2 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON                    "ALARM.ICO"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU
+BEGIN
+    POPUP "Menu"
+    BEGIN
+        MENUITEM "NewGame",                     ID_MENU_NEWGAME
+        MENUITEM "Restart ",                    ID_MENU_RESTART
+        MENUITEM "LeaderBoard",                 ID_MENU_LEADERBOARD
+    END
+    MENUITEM "Help",                        ID_HELP
+    POPUP "Settings"
+    BEGIN
+        MENUITEM "Time Limit",                  ID_Limit
+    END
+END
+
+#endif    // Russian (Russia) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

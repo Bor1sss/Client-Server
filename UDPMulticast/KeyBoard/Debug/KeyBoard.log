@@ -1,0 +1,4 @@
+﻿  Leaderboard.cpp
+C:\Users\Admin\Desktop\KeyBoard\Leaderboard.cpp(194,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Admin\Desktop\KeyBoard\Leaderboard.cpp(204,7): warning C4101: 'pos': unreferenced local variable
+  KeyBoard.vcxproj -> C:\Users\Admin\Desktop\KeyBoard\Debug\KeyBoard.exe

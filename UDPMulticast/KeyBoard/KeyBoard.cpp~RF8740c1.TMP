@@ -1,0 +1,159 @@
+#include "Keyboard.h"
+#define WM_ICON WM_APP
+#define ID_TRAYICON WM_USER
+Keyboard* Keyboard::ptr = nullptr;
+
+Keyboard::Keyboard(void)
+{
+	ptr = this;
+	pNID = new NOTIFYICONDATA;
+}
+
+Keyboard::~Keyboard(void)
+{
+
+	delete pNID;
+}
+
+void Keyboard::Cls_OnClose(HWND hwnd)
+{
+	EndDialog(hwnd, 0);
+}
+
+void Keyboard::Cls_OnSize(HWND hwnd, UINT state, int cx, int cy)
+{
+	if (state == SIZE_MINIMIZED)
+	{
+		ShowWindow(hwnd, SW_HIDE); // Прячем окно
+		Shell_NotifyIcon(NIM_ADD, pNID); // Добавляем иконку в трэй
+	}
+}
+
+
+
+
+
+	enum Keys
+	{
+		Q = IDC_BUTTON1,
+		W, E, R, T, Y, U, I, O, P,
+		A, S, D, F, G, H, J, K, L,
+		Z, X, C, V, B, N, M
+	};
+
+DWORD WINAPI Thread(LPVOID lp) {
+	Keyboard* p = (Keyboard*)lp;
+	TCHAR keys[27] = { L"QWERTYUIOPASDFGHJKLZXCVBNM" };
+	while (true) {
+		
+		for (int i = 0; i < 27; i++)
+		{
+			if (GetKeyState(keys[i] == 1)) {
+				SetWindowText(p->hEdit, TEXT(keys[i]));
+			};
+		}
+	
+	}
+	return 0;
+	
+}
+
+BOOL Keyboard::Cls_OnInitDialog(HWND hwnd, HWND hwndFocus, LPARAM lParam)
+{
+
+	for (int i = 0; i < 26; i++)
+	{
+		hButton[i] = GetDlgItem(hwnd, IDC_BUTTON1 + i);
+	}
+	
+	SetFocus(hwnd);
+	hCPS = GetDlgItem(hwnd, IDC_EDIT2);
+	hIncorrect = GetDlgItem(hwnd, IDC_EDIT3);
+	hProgress = GetDlgItem(hwnd, IDC_PROGRESS1);
+	hEdit = GetDlgItem(hwnd, IDC_EDIT1);
+	
+	hDialog = hwnd;
+
+	HINSTANCE hInst = GetModuleHandle(NULL);
+	hIcon = LoadIcon(hInst, MAKEINTRESOURCE(IDI_ICON1)); // загружаем иконку
+	SetClassLong(hDialog, GCL_HICON, LONG(hIcon)); // устанавливаем иконку в главном окне приложения
+	memset(pNID, 0, sizeof(NOTIFYICONDATA)); //Обнуление структуры
+	pNID->cbSize = sizeof(NOTIFYICONDATA); //размер структуры
+	pNID->hIcon = hIcon; //загружаем пользовательскую иконку
+	pNID->hWnd = hwnd; //дескриптор окна, которое будет получать уведомляющие сообщения,
+	// ассоциированные с иконкой в трэе.	
+	
+
+	pNID->uCallbackMessage = WM_ICON;
+
+	pNID->uFlags = NIF_TIP | NIF_ICON | NIF_MESSAGE | NIF_INFO;
+
+	pNID->uID = ID_TRAYICON; // предопределённый идентификатор иконки
+	
+
+	HANDLE h;
+	CreateThread(NULL, 0, Thread, this, 0, NULL);
+	
+	return TRUE;
+}
+
+void Keyboard::OnTrayIcon(WPARAM wp, LPARAM lp)
+{
+	// WPARAM - идентификатор иконки
+	// LPARAM - сообщение от мыши или клавиатурное сообщение
+	if (lp == WM_LBUTTONDBLCLK)
+	{
+		Shell_NotifyIcon(NIM_DELETE, pNID); // Удаляем иконку из трэя
+		ShowWindow(hDialog, SW_NORMAL); // Восстанавливаем окно
+		SetForegroundWindow(hDialog); // устанавливаем окно на передний план
+	}
+}
+
+void Keyboard::OnKeyBoard(WPARAM wp, LPARAM lp)
+{
+	
+	//if (wp == 'Q')
+	//{
+	//	SetWindowText(hEdit, TEXT("a"));
+	//}
+	//else if (wp == 'W') {
+	//	SetWindowText(hEdit, TEXT("B"));
+	//}
+
+}
+void Keyboard::Cls_OnCommand(HWND hwnd, int id, HWND hwndCtl, UINT codeNotify)
+{
+
+
+}
+
+BOOL CALLBACK Keyboard::DlgProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+
+	switch (message)
+	{
+
+	
+		HANDLE_MSG(hwnd, WM_CLOSE, ptr->Cls_OnClose);
+		HANDLE_MSG(hwnd, WM_INITDIALOG, ptr->Cls_OnInitDialog);
+		HANDLE_MSG(hwnd, WM_COMMAND, ptr->Cls_OnCommand);
+		HANDLE_MSG(hwnd, WM_SIZE, ptr->Cls_OnSize);
+
+		
+		
+	}
+
+	if (message == WM_ICON)
+	{
+		ptr->OnTrayIcon(wParam, lParam);
+		return TRUE;
+	}
+ 	if (message == WM_KEYDOWN)
+	{
+		ptr->OnKeyBoard(wParam, lParam);
+		return TRUE;
+	}
+
+
+	return FALSE;
+}
