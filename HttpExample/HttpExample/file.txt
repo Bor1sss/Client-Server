@@ -1,0 +1,18 @@
+"id":804
+"name":"Odessa"
+"country":"UA"
+"lon":30.7326
+"lat":46.4775}
+"temp_min":8.31
+"temp_max":8.31
+"sunrise":1671773924
+"sunset":1671804793}
+"id": No info found"name": No info found"country": No info found"lon": No info found"lat": No info found"temp_min": No info found"temp_max": No info found"sunrise": No info found"sunset": No info found"id":802
+"name":"Kyiw"
+"country":"UA"
+"lon":30.5167
+"lat":50.4333}
+"temp_min":4.84
+"temp_max":4.84
+"sunrise":1671775007
+"sunset":1671803814}

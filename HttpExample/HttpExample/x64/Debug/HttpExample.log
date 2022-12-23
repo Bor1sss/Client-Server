@@ -1,4 +1,4 @@
 ﻿  HttpExample.cpp
-C:\Users\solt2\Downloads\HttpExample\HttpExample\HttpExample.cpp(22,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\solt2\Downloads\HttpExample\HttpExample\HttpExample.cpp(115,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  HttpExample.vcxproj -> C:\Users\solt2\Downloads\HttpExample\x64\Debug\HttpExample.exe
+C:\Users\Admin\Downloads\HttpExample\HttpExample\HttpExample.cpp(23,32): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Admin\Downloads\HttpExample\HttpExample\HttpExample.cpp(119,8): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  HttpExample.vcxproj -> C:\Users\Admin\Downloads\HttpExample\x64\Debug\HttpExample.exe

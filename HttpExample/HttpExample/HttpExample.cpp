@@ -1,9 +1,10 @@
 ﻿#pragma comment (lib, "Ws2_32.lib")
 #include <Winsock2.h>
 #include <ws2tcpip.h>
-
+#pragma comment(lib, "urlmon.lib")
 #include <iostream>
 #include <string>
+#include <fstream>
 using namespace std;
 string Normal;
 
@@ -14,7 +15,7 @@ void MakeNormal(string n) {
     int Index;
     for (int i = 0; i < 9; i++)
     {
-        if (i == 5||i==6) {
+        if (i == 5 || i == 6) {
 
         }
 
@@ -27,7 +28,7 @@ void MakeNormal(string n) {
         else
         {
             int z = Index;
-            while (n[z]!=',')
+            while (n[z] != ',')
             {
                 Normal += n[z];
                 z++;
@@ -35,7 +36,7 @@ void MakeNormal(string n) {
             Normal += "\r\n";
         }
     }
-   
+
 
 }
 int main()
@@ -51,14 +52,14 @@ int main()
 
         cout << "WSAStartup failed with error: " << err << endl;
         return 1;
-    }  
+    }
 
     //инициализация структуры, для указания ip адреса и порта сервера с которым мы хотим соединиться
-   
+
     char hostname[255] = "api.openweathermap.org";
-    
-    addrinfo* result = NULL;    
-    
+
+    addrinfo* result = NULL;
+
     addrinfo hints;
     ZeroMemory(&hints, sizeof(hints));
     hints.ai_family = AF_INET;
@@ -70,8 +71,8 @@ int main()
         cout << "getaddrinfo failed with error: " << iResult << endl;
         WSACleanup();
         return 3;
-    }  
-   
+    }
+
 
     SOCKET connectSocket = INVALID_SOCKET;
     addrinfo* ptr = NULL;
@@ -87,7 +88,7 @@ int main()
             return 1;
         }
 
-       //3. Соединяемся с сервером
+        //3. Соединяемся с сервером
         iResult = connect(connectSocket, ptr->ai_addr, (int)ptr->ai_addrlen);
         if (iResult == SOCKET_ERROR) {
             closesocket(connectSocket);
@@ -98,17 +99,20 @@ int main()
     }
 
     //4. HTTP Request
-    string City="Odessa";
+    string City = "Odessa";
     cin >> City;
     string uri = "/data/2.5/weather?q=";
-    string uri2="&appid=75f6e64d49db78658d09cb5ab201e483&mode=json&units=metric&lang=de";
+    string uri2 = "&appid=75f6e64d49db78658d09cb5ab201e483&mode=json&units=metric&lang=de";
     uri += City;
     uri += uri2;
-    string request = "GET " + uri + " HTTP/1.1\n"; 
+   
+    //// URLDownloadToFile returns S_OK on success 
+
+    string request = "GET " + uri + " HTTP/1.1\n";
     request += "Host: " + string(hostname) + "\n";
     request += "Accept: */*\n";
-    request += "Accept-Encoding: gzip, deflate, br\n";   
-    request += "Connection: close\n";   
+    request += "Accept-Encoding: gzip, deflate, br\n";
+    request += "Connection: close\n";
     request += "\n";
 
     //отправка сообщения
@@ -119,7 +123,7 @@ int main()
         return 5;
     }
     cout << "send data" << endl;
-    
+
     //5. HTTP Response
 
     string response;
@@ -132,7 +136,7 @@ int main()
     do {
         respLength = recv(connectSocket, resBuf, BUFFERSIZE, 0);
         if (respLength > 0) {
-            response += string(resBuf).substr(0, respLength);           
+            response += string(resBuf).substr(0, respLength);
         }
         else {
             cout << "recv failed: " << WSAGetLastError() << endl;
@@ -142,9 +146,13 @@ int main()
         }
 
     } while (respLength == BUFFERSIZE);
-     MakeNormal(response);
-     cout << Normal << endl << endl;
+    MakeNormal(response);
+    cout << Normal << endl << endl;
     cout << response << endl;
+
+    ofstream in;
+    in.open("file.txt", ios::app);
+    in <<Normal;
 
     //отключает отправку и получение сообщений сокетом
     iResult = shutdown(connectSocket, SD_BOTH);
@@ -157,4 +165,6 @@ int main()
 
     closesocket(connectSocket);
     WSACleanup();
+  
+       
 }
